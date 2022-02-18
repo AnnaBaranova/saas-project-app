@@ -1,4 +1,69 @@
-<h1>
-  Hello World!
-</h1>
+
+<!-- inside app/views/welcome/index.html.erb -->
+<div class="collapse" id="navbarToggleExternalContent">
+  <div class="bg-dark p-4">
+    <h5 class="text-white h4">Collapsed content</h5>
+    <span class="text-muted">Toggleable via the navbar brand.</span>
+  </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <i class="fas fa-flag"></i>
+      Brand
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <%= link_to root_path, class: "nav-link #{'active fw-bold' if current_page?(root_path)}" do %>
+          <div class="fa fa-home"></div>
+          Home
+        <% end %>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <% if current_user %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="fa fa-user"></div>
+              <b><%= current_user.email %></b>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to edit_user_registration_path, class: "dropdown-item #{'active fw-bold' if current_page?(edit_user_registration_path)}" do %>
+                <div class="fa fa-cog"></div>
+                <b>Account settings</b>
+              <% end %>
+              <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
+                <div class="fa fa-sign-out-alt"></div>
+                <b>Sign out</b>
+              <% end %>
+            </ul>
+          </li>
+        <% else %>
+          <%= link_to "Log in", new_user_session_path, class: "nav-link #{'active fw-bold' if current_page?(new_user_session_path)}" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "nav-link #{'active fw-bold' if current_page?(new_user_registration_path)}" %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Album example</h1>
+        <i class="far fa-address-book">Hello</i>
+        <i class="fab fa-github">Hello</i>
+        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+        <p>
+          <a href="#" class="btn btn-primary my-2">Main call to action</a>
+          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
 <%= link_to "Privacy Policy", privacy_policy_path %>
