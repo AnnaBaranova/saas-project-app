@@ -32,7 +32,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
-  config.action_mailer.default_url_options = { :host => 'yourherokuappname.herokuapp.com', :protocol => 'https'}
+  config.action_mailer.default_url_options = { :host => 'https://saas-management-rails-app.herokuapp.com/', :protocol => 'https'}
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
